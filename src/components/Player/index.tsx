@@ -1,46 +1,64 @@
+import { useContext } from "react";
+import { PlayerContext } from "../../contexts/PlayerContext";
+import styles from "./styles.module.scss";
+import Image from "next/image";
 
-import styles from './styles.module.scss';
+export function Player() {
+ const { episodeList, currentEpisodeIndex } = useContext(PlayerContext);
 
-export function Player () {
-    
-    return(
-        <div className={styles.playerContainer}>
-            <header>
-                <img src='/playing.svg' alt='Playing Now'></img>
-                <strong>Playing Now</strong>
-            </header>
+ const episode = episodeList[currentEpisodeIndex];
 
-            <div className={styles.emptyPlayer}>
-                <strong>Select a Podcast to Play</strong>
-            </div>
+ return (
+  <div className={styles.playerContainer}>
+   <header>
+    <img src="/playing.svg" alt="Playing Now"></img>
+    <strong>Playing Now {episode?.title}</strong>
+   </header>
 
-            <footer className={styles.empty}>
-                <div className={styles.progress}>
-                    <span>00:00</span>
-                    <div className={styles.slider}>
-                     <div className={styles.emptySlider}></div>   
-                    </div>
-                    <span>00:00</span>
-                </div>
+   {episode ? (
+    <div className={styles.currentEpisode}>
+     <Image
+      width={592}
+      height={592}
+      src={episode.thumbnail}
+      objectFit="cover"
+     />
+     <strong>{episode.title}</strong>
+     <span>{episode.members}</span>
+    </div>
+   ) : (
+    <div className={styles.emptyPlayer}>
+     <strong>Select a Podcast to Play</strong>
+    </div>
+   )}
 
-                <div className={styles.buttons}>
-                    <button type='button'>
-                        <img src='/shuffle.svg' alt='Shuffle' />
-                    </button>
-                    <button type='button'>
-                        <img src='/play-previous.svg' alt='Play Previous' />
-                    </button>
-                    <button type='button' className={styles.playButton}>
-                        <img src='/play.svg' alt='Play' />
-                    </button>
-                    <button type='button'>
-                        <img src='/play-next.svg' alt='Play Next' />
-                    </button>
-                    <button type='button'>
-                        <img src='/repeat.svg' alt='Repeat' />
-                    </button>
-                </div>
-            </footer>
-        </div>
-    );
+   <footer className={styles.empty}>
+    <div className={styles.progress}>
+     <span>00:00</span>
+     <div className={styles.slider}>
+      <div className={styles.emptySlider}></div>
+     </div>
+     <span>00:00</span>
+    </div>
+
+    <div className={styles.buttons}>
+     <button type="button">
+      <img src="/shuffle.svg" alt="Shuffle" />
+     </button>
+     <button type="button">
+      <img src="/play-previous.svg" alt="Play Previous" />
+     </button>
+     <button type="button" className={styles.playButton}>
+      <img src="/play.svg" alt="Play" />
+     </button>
+     <button type="button">
+      <img src="/play-next.svg" alt="Play Next" />
+     </button>
+     <button type="button">
+      <img src="/repeat.svg" alt="Repeat" />
+     </button>
+    </div>
+   </footer>
+  </div>
+ );
 }
