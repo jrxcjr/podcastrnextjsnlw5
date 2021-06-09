@@ -21,7 +21,11 @@ The code splitting pattern in this project was the one recommended by Next, spli
 The dependencies used in the SPA are located in the package.json file, and the main ones other than the ones brought by create-next-app were: server-json, axios, SASS, NEXT.JS and date-fns.
 
 # How to run The SPA
-The command npm run dev runs the app in the development mode.
+
+First, open an Terminal window then direct yourself to the project source and run the command "npm run server" to run the fake api in the background.
+
+While the first instance of the terminal is running the server, open a second terminal in the same location and type in the command "npm run dev" that runs the app in the development mode.
+
 Open http://localhost:3000 to view it in the browser.
 
 The page will reload if you make edits.
