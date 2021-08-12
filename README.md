@@ -22,9 +22,13 @@ The dependencies used in the SPA are located in the package.json file, and the m
 
 # How to run The SPA
 
-First, open an Terminal window then direct yourself to the project source and run the command "npm run server" to run the fake api in the background.
+First, open an Terminal window then direct yourself to the project source and run the command  
+```npm run server ``` 
+to run the fake api in the background.
 
-While the first instance of the terminal is running the server, open a second terminal in the same location and type in the command "npm run dev" that runs the app in the development mode.
+While the first instance of the terminal is running the server, open a second terminal in the same location and type in the command
+```npm run dev ```
+that runs the app in the development mode.
 
 Open http://localhost:3000 to view it in the browser.
 
